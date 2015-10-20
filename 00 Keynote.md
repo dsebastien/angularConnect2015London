@@ -99,6 +99,11 @@
 * Modern browsers ;-)
 
 ## Release planning
-* Greentea
-* Google Fiber
-* Google AdWords (100s devs, millions of LOC)
+* Teams using it
+  * Greentea
+  * Google Fiber
+  * Google AdWords (100s devs, millions of LOC)
+* Beta
+  * docs
+  * some P1 issues remaining
+* ... (not there yet)
