@@ -77,3 +77,7 @@
 
 ## Path to Angular 2
 * migration path from ng1 to ng2
+
+## Yeoman Office generator
+* `npm install --g generator-office`
+* `yo office`
