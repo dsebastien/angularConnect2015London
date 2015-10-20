@@ -81,3 +81,19 @@
 ## Yeoman Office generator
 * `npm install --g generator-office`
 * `yo office`
+
+## Tooling integration
+* WebStorm support (TypeScript, Angular 2, ...)
+* Visual Studio code
+* ...
+
+## Learning
+* PluralSight
+* Thoughtram
+* Rangle.io
+* Egghead.io
+* ...
+
+## Browser support
+* IE 9-11
+* Modern browsers ;-)
