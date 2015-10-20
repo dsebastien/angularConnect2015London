@@ -97,3 +97,8 @@
 ## Browser support
 * IE 9-11
 * Modern browsers ;-)
+
+## Release planning
+* Greentea
+* Google Fiber
+* Google AdWords (100s devs, millions of LOC)
