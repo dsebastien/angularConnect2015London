@@ -1,5 +1,8 @@
 # Full Stack Angular 2
 
+## Link
+http://fullstackangular2.com/
+
 ## Why
 * save time
 * sell one technology stack
