@@ -106,19 +106,65 @@ class App { ... }
 class MyWidget { ... }
 ```
 
-`comp-b` is a _view child_; it is a child that lives in the view of the component
+`comp-b` is a _view child_; it is a child that lives in the view of the component.
+
+When angular instanciates a component, it takes a component, clones it and the result of instanciating the template is called a View.
 
 ## QueryList
-QueryList is not an array but is similar to one. `QueryList` is iterable thus it can be used in a `for .. of` loop
+QueryList is not an array but is similar to one. `QueryList` is iterable thus it can be used in a `for .. of` loop.
+
 It also has an observable property called `changes` which can be subscribed to in order to be notified whenever the content changes.
 
 ## Get children components
-* @ContentChildren
-* @ViewChildren
+* @ContentChildren: get children that a user would put in a component when he uses it
+* @ContentChild
+* @ViewChildren: children placed in the template by the component's developer
+* @ViewChild
 
 ## TemplateRef
 Allow to reference a chunk of UI
-...
+
+```
+@Component({
+    selector: 'conf-talks',
+    template: `
+        <ul>
+            <template ng-for [ng-for-of]="talks" [ng-for-template]="itemTemplate" />
+        </ul>
+    `
+})
+class ConfTalks{
+    @Input() talks;
+    @ContentChild(TemplateRef) itemTemplate;
+
+    ...
+}
+```
+
+In the example above, we get the template reference using `@ContentChild(TemplateRef)` and we use template ng-for to render it multiple times.
+
+## Form and input
+
+```
+@Component({
+    selector: 'cont-talks',
+    template: `
+        <form>
+            Speaker: <input ng-control="speaker" minlength="3">
+        </form>
+    `
+})
+class ConfTalks{
+    ...
+
+    @ViewChild(NgForm) form;
+    ...
+
+    afterViewInit(){
+        ...
+    }
+}
+```
 
 ## Lifecycle
 * OnChanges
