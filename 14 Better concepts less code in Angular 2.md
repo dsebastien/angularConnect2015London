@@ -143,6 +143,20 @@ class ConfTalks{
 
 In the example above, we get the template reference using `@ContentChild(TemplateRef)` and we use template ng-for to render it multiple times.
 
+## Lifecycle
+* Component Element
+  * OnChanges
+  * OnInit
+  * DoCheck
+  * OnDestroy
+* Content Children
+  * AfterContentInit
+  * AfterContentChecked
+* View Children
+  * AfterViewInit
+  * AfterViewChecked
+* ...
+
 ## Form and input
 
 ```
@@ -157,24 +171,28 @@ In the example above, we get the template reference using `@ContentChild(Templat
 class ConfTalks{
     ...
 
-    @ViewChild(NgForm) form;
+    @Input() set talks {
+        this._talks = talks;
+        this.filteredTalks = talks;
+    }
+
+    @ViewChild(NgForm) form; // will be populated after the View has been created (i.e., after the template has been loaded)
     ...
 
     afterViewInit(){
+        let changes = this.form.control.valueChanges; // observable
+        changes
+            .filter(_ => this.form.valid) // only emit values when the input is valid
+            .throttle(500) // only emit values after 500ms of inactivity
+            .subscribe(value => this.filterTalks(value)); // subscribe
+
         ...
+    }
+
+    filterTalks(filters){
+        this.filteredTalks  = this._talks.filter(
+            t => t.speaker.indexOf(filter.speaker) > -1);
     }
 }
 ```
-
-## Lifecycle
-* OnChanges
-* OnInit
-* DoCheck
-* OnDestroy
-* AfterContentInit
-* AfterContentChecked
-* AfterViewInit
-* AfterViewChecked
-* ...
-
 
