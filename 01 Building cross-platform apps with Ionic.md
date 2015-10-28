@@ -1,13 +1,24 @@
 # Building cross-platform apps with Ionic
 
-## Stats
+## Links
+* alpha: ionic.io/2
+
+## Ionic Stats
 * top 40 OSS project
 * 1+M apps
 * ...
 
-## About
+## About Ionic
+* mobile only UI toolkit
+
+## About Ionic 2
+* evolution of the Ionic framework for Angular 2
 * same framework
 * same goals
+* supports better navigation
+* supports theming
+* has tons of built-in icons
+* integrates usage of Web Animations API
 
 ## Simplicity
 
@@ -77,10 +88,15 @@ Ionic 2 built with ES2015 & TypeScript.
 ### Native power
 * easy access to native functionality
 
-### IONIC CLI
+## IONIC CLI
 * ES6/TypeScript transpilation
 * Sass compiling
 * Cordova build
 * Webpack bundling
 * Scaffolding/architecture
 * ...
+
+## Future
+* Web Worker support
+* Staying in sync with Angular 2
+* Add even more to ionic.io services
