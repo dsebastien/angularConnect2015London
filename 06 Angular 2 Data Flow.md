@@ -180,7 +180,22 @@ The AsyncPipe will take care of the subscription, will get the result, return it
 
 ### Template transforms
 * plugin to transform Angular templates
-* happens during compilation, on application load
+* runs during compilation, on application load
+
+Example:
+```
+// developer writes
+<div>
+    {{model.firstName}}
+    {{model.lastName}}
+</div>
+
+// a transformer can generate
+<div>
+    {{model.get("firstName")}}
+    {{model.get("lastName")}}
+</div>
+```
 
 For app devs:
 * better sugar for third party libraries
@@ -191,16 +206,20 @@ Transformers work on the AST used by the Angular compiler and the transformer pr
 
 
 ### Tactical
+Data access library. Outside of Angular core.
+
 Offline first approach:
 * works against most APIs
-* * focus on user experience
+  * focus on user experience
+    * cache reads
+    * eventual consistency for writes
+    * client-side conflict resolution
 
 Tactical uses observables:
 * freshest available
 * offline mutations with background sync
 * first write wins guarantee
-* ...
-...
+* server-side push if back-end supports it
 
 Edge cases:
 * List vs Get request
@@ -208,7 +227,7 @@ Edge cases:
 * Prefetching
 
 Tactics:
-* application extensions to the model
+* applications can integrate logic to extend the Tactical model
 * add context to improve UX
   * ...
 
