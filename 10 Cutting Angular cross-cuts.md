@@ -34,7 +34,21 @@ These must be separated: caching, logging, ..
 ```
 
 ## Using an aspect
-* AspectJS library: aspect.js
+AspectJS library: aspect.js
 
-... example
+```
+@Wove()
+export class Http {
+    get(url: string){
+        ...
+    }
+}
 
+export class CacheAspect {
+    @before(/.*/, /^get)
+    before(m, param) { ... }
+
+    @after(/.*/, /^get/)
+    after(m, id) { ... }
+}
+```

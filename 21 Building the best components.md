@@ -1,5 +1,8 @@
 # Building the best components
 
+## Links
+* slides: https://g.co/ng/ac-best-components
+
 ## What makes a good component
 * simple, straightforward APIs
 * works consistently, reliably and performantly in all environments
@@ -130,3 +133,31 @@ it('should test something', (done) => {
     builder.createAsync(TestApp).then(rootTestCmp => { ... });
 });
 ```
+
+### Measuring performance
+* unit and e2e tests guard against behavioral regressions
+* benchmark tests guard against performance regressions
+
+Benchpress:
+* framework for creation and sampling of benchmarks for real world apps
+* Angular team created Benchpress for measuring the framework itself
+* detailed breakdown of performance metrics
+
+Example Benchpress test:
+```
+let runner = new benchpress.Runner(config);
+it('should be fast!', (done) => {
+    browser.get(testUrl);
+    runner.sample({
+        id: 'important-test',
+        execute: () => { doStuffWeWantToMeasure(); }
+    });
+    done();
+});
+```
+
+The output includes:
+* amount of memory garbage collected
+* garbage collection time
+* render time
+* script execution time

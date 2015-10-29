@@ -8,14 +8,14 @@ http://fullstackangular2.com/
 * sell one technology stack
   * less contention
   * less political games
-  * ...
-* remove duplication
+* less context switching
+* less code duplication
 
 ## JS
 Much more powerful nowadays and the trend will continue over the years:
 * ES2015
 * ES2016
-* ...
+* Modules, Decorators, Observables, Tooling, Dependency Injection, Server Side Rendering, ...
 
 ## Dependency injection
 Reuse code across client & server sides through DI.
@@ -53,3 +53,5 @@ app.listen(3000, () => {
     console.log('Server started');
 });
 ```
+
+##
