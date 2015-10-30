@@ -57,6 +57,8 @@ https://docs.google.com/presentation/d/1r1ffV-shRXHXct9DbJRVesNs6oLLk8PFGQvlE1zL
 * npm install ng
 * scaffold new project
 * create new components
+* create pipes
+* run & rebuild on the fly
 * ...
 
 ## Batarangle
