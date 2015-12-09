@@ -127,5 +127,87 @@ var QuestionPage = function(){
         this.button.click();
     };
 };
-module.expoerts = QuestionPage;
+module.exports = QuestionPage;
 ```
+
+In addition:
+* declare one page object per file
+* have a single module.exports statement at the end
+* require and instanciate all dependencies at the top
+  * clearly show the dependencies
+
+Example:
+```
+var UserPage = require('./user.page');
+var MenuPage = require('./menu.page');
+
+describe('User page', function(){
+    var user = new UserPage();
+    var menu = new MenuPage();
+    // specs
+});
+```
+
+Expose all public elements in the constructor: the user page should have quick access to the available elements on a page
+
+Example:
+
+```
+var userPage = require('./user.page');
+
+describe('User page', function(){
+    var user = new UserPage();
+
+    it('should work'), function(){
+        user.name.sendKeys('bla');
+        expect(user.saveButton.isEnabled()).toBe(true);
+    }});
+```
+
+Don't make assertions in the page objects: that is the responsibility of the test. The reader should be able to understand the behavior of the application by looking at the test only.
+
+Add wrappers for directives, dialogs and common elements:
+* reuse those in multiple tests
+* only one place to modify
+
+Page objects should represent portions of the viewport, not necessarily a complete page.
+
+## Test suites
+
+### Don't mock unless you need to
+Using the real application with all the dependencies gives you high confidence.
+Mock when you cannot call the real application.
+
+### Use Jasmine 2
+* Jasmine 2 is well documented
+* Supported by Protractor out of the box
+* Supports beforeAll, afterAll, ...
+
+### Make tests independent at file level
+Allows to run tests in parallel using sharding.
+
+The execution order is not guaranteed (which is why they should be independent).
+
+You can run suites in isolation.
+
+### Make tests independent from each other
+Allows tests to run in isolation.
+
+Allows to debug tests more easily.
+
+Exception:
+If operations performed to initialize the state of the test are too expensive.
+
+### Navigate to the page under test before each test
+Ensures that the page under test is in a clean state.
+
+### Navigation suite
+Have a test suite that navigates through the major routes of the application.
+
+Makes sure that major parts of the application are correctly connected to each other.
+
+Users usually don't navigate by manually entering URLs.
+
+Gives confidence about permissions.
+
+
